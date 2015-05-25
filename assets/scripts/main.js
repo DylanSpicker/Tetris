@@ -169,9 +169,9 @@ $(document).ready(function(){
 			drawBoard();
 		}
 		
+		shape           = shapes[nextShape];
+		nextShape = Math.floor(Math.random() * 9);
 		
-		shape           = shapes[Math.floor(Math.random() * 9)];
-	
 		shapeTopLeft    = [4,-2];
 		newSpot			= [4,-2];
 		shapePattern	= 0;
@@ -191,16 +191,38 @@ $(document).ready(function(){
 			return false;
 		}
 		$(".score").html(score);
+		$("#nextshape").html("");
+	
+		for(j = 0; j < 5; j++){
+			
+			var nextShapeRow = shapes[nextShape][0][j];
+			
+			$("#nextshape").append("<tr class='row-"+j+"'></tr>");
+			
+			for(n = 0; n < 5; n++){
+				
+				if(nextShapeRow[n]){
+					$("#nextshape .row-"+j).append("<td class='occupied'></td>");
+				}else{
+					$("#nextshape .row-"+j).append("<td></td>");
+				}
+				
+			}
+		}
 		return true;
 		
 	}
 	
 	var score = 0;
+	var nextShape = Math.floor(Math.random() * 9);
 	var down = false;
 	
 	$(".score").html(score);
+	
 		
-	var shape           = shapes[Math.floor(Math.random() * 9)];
+	var shape           = shapes[nextShape];
+	nextShape = Math.floor(Math.random() * 9);
+	
 	var shapeTopLeft    = [4,-2];
 	var newSpot			= [4,-2];
 	var shapePattern	= 0;
@@ -208,6 +230,25 @@ $(document).ready(function(){
 	var intervalDown;
 	
 	drawBoard();
+	
+	$("#nextshape").html("");
+	
+	for(j = 0; j < 5; j++){
+		
+		var nextShapeRow = shapes[nextShape][0][j];
+		
+		$("#nextshape").append("<tr class='row-"+j+"'></tr>");
+		
+		for(n = 0; n < 5; n++){
+			
+			if(nextShapeRow[n]){
+				$("#nextshape .row-"+j).append("<td class='occupied'></td>");
+			}else{
+				$("#nextshape .row-"+j).append("<td></td>");
+			}
+			
+		}
+	}
 	
     if(drawShape(shape, shapeTopLeft, shapePattern)){
 		$(".active-new").addClass("active").removeClass("active-new");
