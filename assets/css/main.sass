@@ -1,0 +1,127 @@
+html, body
+	height: 100%
+	margin: 0
+	padding: 0
+
+h2.score
+	position: absolute
+	top: 0
+	left: 0
+
+section.tetris-holder
+	width: 100%
+	height: 100%
+	margin: 0px
+	padding: 0px
+	
+	table#tetris-game
+		width: 450px
+		margin: 0px auto
+		tr
+			td
+				width: 30px
+				height: 30px
+				&.occupied
+					background-color: black !important
+				&.active
+					background-color: red !important
+	.shape
+		width: 160px
+		height: 160px
+		position: absolute
+		top: 0px
+		left: 40px
+		
+		.edge-piece
+			width: 40px
+			height: 40px
+			float: left
+			margin: 0px
+			padding: 0px
+			background: transparent
+		.game-piece
+			width: 40px
+			height: 40px
+			float: left
+			margin: 0px
+			padding: 0px
+			background: red
+	.game-area
+		background: #DDD
+		width: 400px
+		height: 840px
+		margin: 0px auto
+		position: relative
+		
+		//.square-all
+		//	width: 40px
+		//	height: 40px
+		//	position: absolute
+		//	left: 160px
+		//	top: 440px
+		//	background: red
+		.rec-2
+			width: 80px
+			background: red
+			height: 40px
+			position: absolute
+			left: 160px
+			top: 200px
+			.z
+				position: absolute
+				top: -40px
+				left: -40px
+				width: 80px
+				height: 40px
+				background: inherit
+			.s
+				position: absolute
+				top: 40px
+				left: 40px
+				width: 80px
+				height: 40px
+				background: inherit
+			.o
+				position: absolute
+				top: -40px
+				left: 0px
+				width: 80px
+				height: 40px
+				background: inherit
+			.l
+				position: absolute
+				top: -40px
+				left: 80px
+				width: 40px
+				height: 80px
+				background: inherit
+			.j
+				position: absolute
+				top: -40px
+				left: -40px
+				width: 40px
+				height: 80px
+				background: inherit
+			.i
+				width: 80px
+				background: inherit
+				height: 40px
+				position: absolute
+				left: -80px
+				top: 0px
+				
+		.rec-3
+			width: 120px
+			background: blue
+			height: 40px
+			position: absolute
+			left: 160px
+			top: 400px
+			
+			.middle
+				height: 80px
+				background: inherit
+				width: 40px
+				left: 40px
+				top: -40px
+				position: absolute
