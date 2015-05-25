@@ -75,13 +75,17 @@ $(document).ready(function(){
 		}else{
 			
 			if(down){
-				placeShape();
-				down = false;
+				
+				if(placeShape()){
+					down = false;			
+				}else{
+					return false;
+				}
+				
 			}else{
 				shapePatternNew = shapePattern;
 				newSpot = [0,0];
 			}
-			
 		}
 		
 		if(score < 50){
@@ -183,10 +187,11 @@ $(document).ready(function(){
 			newSpot = [0,0];
 		}else{
 			alert("Game Over!");
-			clearTimeout(intervalDown);
 			$("#tetris-game").html("<h1>Game Over!</h1><p>Your scored: <strong>"+score+"</strong></p><p><a href='index.html'>Play Again?</a>");
+			return false;
 		}
 		$(".score").html(score);
+		return true;
 		
 	}
 	
@@ -200,6 +205,7 @@ $(document).ready(function(){
 	var newSpot			= [4,-2];
 	var shapePattern	= 0;
 	var shapePatternNew = 0;
+	var intervalDown;
 	
 	drawBoard();
 	
@@ -207,7 +213,7 @@ $(document).ready(function(){
 		$(".active-new").addClass("active").removeClass("active-new");
 	}
 	
-	var intervalDown = setTimeout(dropShape, 500);
+	intervalDown = setTimeout(dropShape, 500);
 	
 	$(document).keydown(function(e) {
 				
@@ -259,7 +265,11 @@ $(document).ready(function(){
 			
 			if(down){
 				
-				placeShape();
+				if(placeShape()){
+					down = false;
+				}else{
+					clearTimeout(intervalDown);
+				}
 				down = false ;
 				
 			}else{
